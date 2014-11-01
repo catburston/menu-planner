@@ -1,0 +1,35 @@
+<!-- index.html.erb -->
+<h1>All Ingredients</h1>
+<table>
+  <tr>
+    <th>
+      Ingredient
+    </th>
+    <th>
+      Grocery
+    </th>
+    <th>
+      Manage
+    </th>
+  </tr>
+  <% @ingredients.each do |ingredient| %>
+    <tr>
+      <td>
+        <p>
+          <%= link_to ingredient.title, ingredient_path(ingredient) %>
+        </p>
+      </td>
+      <td>
+        <p>
+          <%= ingredient.grocery_item %>
+        </p>
+      </td>
+      <td>
+        <p>
+          <%= link_to 'Edit', edit_ingredient_path(ingredient) %> | <%= link_to 'Delete', ingredient_path(ingredient), method: :delete, data: { confirm: 'Click OK to delete this ingredient'} %>
+        </p>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<%= link_to 'Add Ingredient', new_ingredient_path %>
