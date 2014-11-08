@@ -1,0 +1,35 @@
+<!-- index.html.erb -->
+<h1>All Recipes</h1>
+<table>
+  <tr>
+    <th>
+      Recipe
+    </th>
+    <th>
+      Ingredients
+    </th>
+    <th>
+      Manage
+    </th>
+  </tr>
+  <% @recipes.each do |recipe| %>
+    <tr>
+      <td>
+        <p>
+          <%= link_to recipe.title, recipe_path(recipe) %>
+        </p>
+      </td>
+      <td>
+        <p>
+          <%= recipe.ingredient %>
+        </p>
+      </td>
+      <td>
+        <p>
+          <%= link_to 'Edit', edit_recipe_path(recipe) %> | <%= link_to 'Delete', recipe_path(recipe), method: :delete, data: { confirm: 'Click OK to delete this recipe'} %>
+        </p>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<%= link_to 'Add Recipe', new_recipe_path %>
