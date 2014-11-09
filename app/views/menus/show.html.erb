@@ -8,7 +8,9 @@
   <strong>Recipes:</strong>
   <ul>
     <% @menu.recipes.each do |r| %>
-      <li><%= r.title %></li>
+      <li>
+        <%= link_to r.title, recipe_path(r) %>
+      </li>
     <% end %>
   </ul>
 </p>
@@ -16,3 +18,22 @@
 <p>
   <%= link_to 'Edit', edit_menu_path(@menu) %> | <%= link_to 'Delete', menu_path(@menu), method: :delete, data: { confirm: 'Click OK to delete this menu'} %>
 </p>
+
+<h2>Shopping List</h2>
+
+<table>
+  <tr>
+    <th>Ingredient</th>
+    <th>Grocery</th>
+  </tr>
+  <% @menu.ingredients.order("grocery_item ASC, title ASC").each do |i| %>
+    <tr>
+      <td>
+        <%= i.title %>
+      </td>
+      <td>
+        <%= i.grocery_item %>
+      </td>
+    </tr>
+  <% end %>
+</table>
