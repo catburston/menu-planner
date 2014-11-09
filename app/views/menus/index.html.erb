@@ -22,7 +22,9 @@
       <td>
         <ul>
           <% menu.recipes.each do |r| %>
-            <li><%= r.title %></li>
+            <li>
+              <%= link_to r.title, recipe_path(r) %>
+            </li>
           <% end %>
         </ul>
       </td>
