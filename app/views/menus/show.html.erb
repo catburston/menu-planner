@@ -1,0 +1,14 @@
+<!-- show.html.erb -->
+<p>
+  <strong>MENU:</strong>
+  <%= @menu.title %>
+</p>
+
+<p>
+  <strong>Recipes:</strong>
+  <%= @menu.recipes.map {|r| r.title}.join(', ') %>
+</p>
+
+<p>
+  <%= link_to 'Edit', edit_menu_path(@menu) %> | <%= link_to 'Delete', menu_path(@menu), method: :delete, data: { confirm: 'Click OK to delete this menu'} %>
+</p>

@@ -21,7 +21,7 @@
       </td>
       <td>
         <p>
-          <%= recipe.ingredient %>
+          <%= recipe.ingredients.map {|i| i.title}.join(', ') %>
         </p>
       </td>
       <td>

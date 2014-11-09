@@ -1,6 +1,7 @@
 class IngredientsController < ApplicationController
+  before_action :set_ingredient, only: [:show, :edit, :update, :destroy
+  ]
   def show
-    @ingredient = Ingredient.find(params[:id])
   end
 
   def index
@@ -9,6 +10,7 @@ class IngredientsController < ApplicationController
 
   def new
     @ingredient = Ingredient.new
+    @recipes = Recipe.all
   end
 
   def create
@@ -21,11 +23,10 @@ class IngredientsController < ApplicationController
   end
 
   def edit
-    @ingredient = Ingredient.find(params[:id])
+    @recipes = Recipe.all
   end
 
   def update
-    @ingredient = Ingredient.find(params[:id])
     if @ingredient.update(ingredient_params)
       redirect_to @ingredient
     else
@@ -34,12 +35,14 @@ class IngredientsController < ApplicationController
   end
 
   def destroy
-    @ingredient = Ingredient.find(params[:id])
     @ingredient.destroy
     redirect_to ingredients_path
   end
 
   private
+    def set_ingredient
+      @ingredient = Ingredient.find(params[:id])
+    end
     def ingredient_params
       params.require(:ingredient).permit(:title, :grocery_item)
     end

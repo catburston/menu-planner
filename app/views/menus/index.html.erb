@@ -1,0 +1,35 @@
+<!-- index.html.erb -->
+<h1>All Menus</h1>
+<table>
+  <tr>
+    <th>
+      Menu
+    </th>
+    <th>
+      Recipes
+    </th>
+    <th>
+      Manage
+    </th>
+  </tr>
+  <% @menus.each do |menu| %>
+    <tr>
+      <td>
+        <p>
+          <%= link_to menu.title, menu_path(menu) %>
+        </p>
+      </td>
+      <td>
+        <p>
+          <%= menu.recipes.map {|r| r.title}.join(', ') %>
+        </p>
+      </td>
+      <td>
+        <p>
+          <%= link_to 'Edit', edit_menu_path(menu) %> | <%= link_to 'Delete', menu_path(menu), method: :delete, data: { confirm: 'Click OK to delete this menu'} %>
+        </p>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<%= link_to 'Add Menu', new_menu_path %>

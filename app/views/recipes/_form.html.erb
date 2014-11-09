@@ -19,8 +19,7 @@
     <%= f.text_field :title %>
   </p>
   <p>
-    <%= f.label :ingredient %>
-    <%= f.text_field :ingredient %>
+    <%= collection_check_boxes(:recipe, :ingredient_ids, @ingredients, :id, :title) %>
   </p>
   <p>
     <%= f.submit %>
