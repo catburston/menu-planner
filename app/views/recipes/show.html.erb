@@ -6,7 +6,11 @@
 
 <p>
   <strong>Ingredients:</strong>
-  <%= @recipe.ingredients.map {|i| i.title}.join(', ') %>
+  <ul>
+    <% @recipe.ingredients.each do |i| %>
+      <li><%= i.title %></li>
+    <% end %>
+  </ul>
 </p>
 
 <p>

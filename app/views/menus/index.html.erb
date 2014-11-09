@@ -20,9 +20,11 @@
         </p>
       </td>
       <td>
-        <p>
-          <%= menu.recipes.map {|r| r.title}.join(', ') %>
-        </p>
+        <ul>
+          <% menu.recipes.each do |r| %>
+            <li><%= r.title %></li>
+          <% end %>
+        </ul>
       </td>
       <td>
         <p>
