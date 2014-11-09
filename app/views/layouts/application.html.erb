@@ -8,6 +8,8 @@
 </head>
 <body>
 
+  <header><%= link_to 'home', root_path %> | <%= link_to 'Menus', controller: 'menus' %> | <%= link_to 'Recipes', controller: 'recipes' %> | <%= link_to 'Ingredients', controller: 'ingredients' %></header>
+
 <%= yield %>
 
 </body>

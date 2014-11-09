@@ -1,6 +1,6 @@
 <!-- _form.html.erb -->
 
-<%= form_for :ingredient do |f| %>
+<%= form_for :ingredient, url: ingredients_path do |f| %>
   <% if @ingredient.errors.any? %>
     <div id="error">
       <h2>

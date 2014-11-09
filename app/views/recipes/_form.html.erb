@@ -1,0 +1,27 @@
+<!-- _form.html.erb -->
+
+<%= form_for :recipe, url: recipes_path do |f| %>
+  <% if @recipe.errors.any? %>
+    <div id="error">
+      <h2>
+        <%= pluralize(@recipe.errors.count, "error") %> prohibited this recipe from being saved:
+      </h2>
+      <ul>
+        <% @recipe.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= collection_check_boxes(:recipe, :ingredient_ids, @ingredients, :id, :title) %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

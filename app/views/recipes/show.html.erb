@@ -1,0 +1,14 @@
+<!-- show.html.erb -->
+<p>
+  <strong>RECIPE:</strong>
+  <%= @recipe.title %>
+</p>
+
+<p>
+  <strong>Ingredients:</strong>
+  <%= @recipe.ingredients.map {|i| i.title}.join(', ') %>
+</p>
+
+<p>
+  <%= link_to 'Edit', edit_recipe_path(@recipe) %> | <%= link_to 'Delete', recipe_path(@recipe), method: :delete, data: { confirm: 'Click OK to delete this recipe'} %>
+</p>
