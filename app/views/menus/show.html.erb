@@ -23,13 +23,18 @@
 
 <table>
   <tr>
+    <th>Quantity</th>
     <th>Ingredient</th>
     <th>Grocery</th>
   </tr>
-  <% @menu.ingredients.order("grocery_item ASC, title ASC").each do |i| %>
+  <% @shopping_list.each do |k, v| %>
+  <% i = Ingredient.find_by title: k %>
     <tr>
       <td>
-        <%= i.title %>
+        <%= v %>
+      </td>
+      <td>
+        <%= k %>
       </td>
       <td>
         <%= i.grocery_item %>

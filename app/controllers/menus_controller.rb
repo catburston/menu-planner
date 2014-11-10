@@ -2,6 +2,8 @@ class MenusController < ApplicationController
   before_action :set_menu, only: [:show, :edit, :update, :destroy]
 
   def show
+    ingredients = @menu.ingredients
+    @shopping_list = ingredients.group("ingredients.title").count
   end
 
   def index
