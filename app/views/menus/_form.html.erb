@@ -16,7 +16,11 @@
 
   <p>
     <%= f.label :title %>
-    <%= f.text_field :title %>
+    <% if @menu.new_record? %>
+      <%= f.text_field :title, :value => "Menu for #{@date}" %>
+    <% else %>
+      <%= f.text_field :title %>
+    <% end %>
   </p>
   <p>
     <%= collection_check_boxes(:menu, :recipe_ids, @recipes, :id, :title) %>

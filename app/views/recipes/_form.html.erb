@@ -22,6 +22,18 @@
     <%= collection_check_boxes(:recipe, :ingredient_ids, @ingredients, :id, :title) %>
   </p>
   <p>
+    <%= f.label :category %>
+    <%= select(:recipe, :category, ['pasta', 'rice', 'soup', 'salad', 'sweets', 'other']) %>
+  </p>
+  <p>
+    <%= f.label :recipe_type %>
+    <%= select(:recipe, :recipe_type, ['schoolnight', 'potheavy', 'main', 'side', 'dessert']) %>
+  </p>
+  <p>
+    <%= f.label :chef %>
+    <%= select(:recipe, :chef, ['Cat', 'Tom']) %>
+  </p>
+  <p>
     <%= f.submit %>
   </p>
 <% end %>

@@ -1,7 +1,8 @@
 <!-- show.html.erb -->
 <p>
-  <strong>RECIPE:</strong>
-  <%= @recipe.title %>
+  <h3>RECIPE:</h3>
+  <strong><%= @recipe.title %></strong><br />
+  <%= @recipe.category %> | <%= @recipe.recipe_type %> | <%= @recipe.chef %>
 </p>
 
 <p>
