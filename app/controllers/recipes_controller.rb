@@ -5,7 +5,8 @@ class RecipesController < ApplicationController
   end
 
   def index
-    @recipes = Recipe.all
+    params[:sort_params] = %w{category recipe_type chef}.include?(params[:sort_params]) ? params[:sort_params] : 'title'
+    @recipes = Recipe.all.order "#{params[:sort_params]} ASC"
   end
 
   def new
@@ -46,6 +47,11 @@ class RecipesController < ApplicationController
       @recipe = Recipe.find(params[:id])
     end
     def recipe_params
-      params.require(:recipe).permit(:title, :ingredient_ids => [])
+      params.require(:recipe).permit(:title, :category, :recipe_type, :chef, :ingredient_ids => [])
+    end
+    def sort_params
+      params.permit(:category, :recipe_type, :chef, :title)
+    end
+    def recipe_arrays
     end
 end

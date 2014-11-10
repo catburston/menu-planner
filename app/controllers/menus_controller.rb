@@ -11,6 +11,7 @@ class MenusController < ApplicationController
   def new
     @menu = Menu.new
     @recipes = Recipe.all
+    @date = Date.commercial(Date.today.year, 1+Date.today.cweek, 1).strftime("%d %b, %Y")
   end
 
   def create
@@ -38,6 +39,9 @@ class MenusController < ApplicationController
     @menu = Menu.find(params[:id])
     @menu.destroy
     redirect_to menus_path
+  end
+
+  def shopping_list
   end
 
   private
